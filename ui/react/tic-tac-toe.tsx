@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Button from './button';
+import Button from '../button';
 
 const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(null));

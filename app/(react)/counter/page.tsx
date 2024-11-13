@@ -1,4 +1,4 @@
-import Counter from '../../ui/counter';
+import Counter from '../../../ui/react/counter';
 
 export default function Page() {
   return (

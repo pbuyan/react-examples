@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Button from './button';
+import Button from '../button';
 
 const Counter = () => {
   const [counter, setCounter] = useState(0);

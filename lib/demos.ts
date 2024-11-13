@@ -19,9 +19,9 @@ export const demos: { name: string; items: Item[] }[] = [
         description: 'Create react tic tac toe game',
       },
       {
-        name: 'Parallel Routes',
-        slug: 'parallel-routes',
-        description: 'Render multiple pages in the same layout',
+        name: 'List',
+        slug: 'list',
+        description: 'Create React list',
       },
     ],
   },

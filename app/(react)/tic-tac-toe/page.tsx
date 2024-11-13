@@ -1,4 +1,4 @@
-import TicTacToe from '../../ui/tic-tac-toe';
+import TicTacToe from '../../../ui/react/tic-tac-toe';
 
 export default function Page() {
   return (
