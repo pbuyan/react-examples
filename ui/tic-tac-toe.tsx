@@ -112,7 +112,6 @@ const TicTacToe = () => {
           }
         `}
       </style> */}
-      <h1>Tic Tac Toe</h1>
       <div className="mx-auto my-5 flex flex-col">
         {[0, 1, 2].map((row) => (
           <div className="flex flex-row justify-center" key={row}>
