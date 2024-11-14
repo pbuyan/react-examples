@@ -26,9 +26,14 @@ const List = () => {
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
           placeholder={'Add new item'}
-          className="mr-1 w-2/3 border border-gray-50 p-2 text-gray-500"
+          className="mr-1 w-2/3 rounded border border-gray-50 p-2 text-gray-500"
         />
-        <Button onClick={() => addItem()}>Add</Button>
+        <Button
+          onClick={() => addItem()}
+          className="rounded bg-slate-600 px-4 py-2"
+        >
+          Add
+        </Button>
       </div>
       <ul className="list-none p-0">
         {items.map((item, i) => (

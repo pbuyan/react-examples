@@ -1,4 +1,6 @@
+import React from 'react';
 import List from '../../../ui/react/list';
+import CodeHighlighter from '#/ui/code-highlighter';
 
 export default function Page() {
   return (
@@ -7,6 +9,7 @@ export default function Page() {
 
       <div>
         <List />
+        <CodeHighlighter filePath="/../ui/react/list.tsx" />
       </div>
     </div>
   );
