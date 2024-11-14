@@ -23,6 +23,41 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'list',
         description: 'Create React list',
       },
+      {
+        name: 'Color Dropdown',
+        slug: 'color-dropdown',
+        description: 'Create React color dropdown',
+      },
+      {
+        name: 'Live Paragraph',
+        slug: 'live-paragraph',
+        description: 'Create React Live Paragraph',
+      },
+      {
+        name: 'Quiz Builder',
+        slug: 'quiz-builder',
+        description: 'Create React Quiz Builder',
+      },
+      {
+        name: 'Weather Dashboard',
+        slug: 'weather-dashboard',
+        description: 'Create React Weather Dashboard',
+      },
+      {
+        name: 'Letter Tiles',
+        slug: 'letter-tiles',
+        description: 'Create React Letter Tiles',
+      },
+      {
+        name: 'Context API',
+        slug: 'context-api',
+        description: 'Create React Context API',
+      },
+      {
+        name: 'Phone Book',
+        slug: 'phone-book',
+        description: 'Create React Phone Book',
+      },
     ],
   },
   {

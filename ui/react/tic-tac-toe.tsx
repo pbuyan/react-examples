@@ -3,20 +3,70 @@
 import React, { useState } from 'react';
 import Button from '../button';
 
+const rowStyle = {
+  display: 'flex',
+};
+
+const squareStyle = {
+  width: '60px',
+  height: '60px',
+  backgroundColor: '#ddd',
+  margin: '4px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '20px',
+  color: 'black',
+  cursor: 'pointer',
+};
+
+const boardStyle = {
+  backgroundColor: '#eee',
+  width: '208px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  border: '3px #eee solid',
+};
+
+const containerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+};
+
+const instructionsStyle = {
+  marginTop: '5px',
+  marginBottom: '5px',
+  fontWeight: 'bold',
+  fontSize: '16px',
+};
+
+const buttonStyle = {
+  marginTop: '15px',
+  marginBottom: '16px',
+  width: '80px',
+  height: '40px',
+  backgroundColor: '#8acaca',
+  color: 'white',
+  fontSize: '16px',
+};
+
+function Square({ value, onClick }) {
+  return (
+    <div className="square" style={squareStyle} onClick={onClick}>
+      {value}
+    </div>
+  );
+}
+
 const TicTacToe = () => {
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [squares, setSquares] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [winner, setWinner] = useState(null);
 
-  const handleClick = (index: number) => {
-    if (board[index] || calculateWinner(board)) return; // Ignore if already clicked or game over
-
-    const newBoard = [...board];
-    newBoard[index] = isXNext ? 'X' : 'O';
-    setBoard(newBoard);
-    setIsXNext(!isXNext);
-  };
-
-  const calculateWinner = (squares: number[]) => {
+  const calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -40,93 +90,54 @@ const TicTacToe = () => {
     return null;
   };
 
-  const winner = calculateWinner(board);
+  const handleClick = (index) => {
+    if (squares[index] || winner) return;
 
-  const renderSquare = (index: number) => (
-    <Button
-      className="square h-24 w-24 border border-white bg-[#f9f9f9] hover:bg-[#e8e8e8]"
-      onClick={() => handleClick(index)}
-    >
-      {board[index]}
-    </Button>
-  );
+    const newSquares = squares.slice();
+    newSquares[index] = isXNext ? 'X' : 'O';
+    setSquares(newSquares);
+
+    const gameWinner = calculateWinner(newSquares);
+    if (gameWinner) {
+      setWinner(gameWinner);
+    } else {
+      setIsXNext(!isXNext);
+    }
+  };
 
   const resetGame = () => {
-    setBoard(Array(9).fill(null));
+    setSquares(Array(9).fill(null));
     setIsXNext(true);
+    setWinner(null);
   };
 
   return (
-    <div className="game font-[Arial, sans-serif] mt-12 text-center">
-      {/* <style jsx>
-        {`
-          .game {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-          }
-
-          .board {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            gap: 10px;
-            justify-content: center;
-            margin: 20px auto;
-          }
-
-          .row {
-            display: flex;
-          }
-
-          .square {
-            width: 100px;
-            height: 100px;
-            font-size: 24px;
-            font-weight: bold;
-            border: 2px solid #fff;
-            background-color: #f9f9f9;
-            cursor: pointer;
-          }
-
-          .square:hover {
-            background-color: #e8e8e8;
-          }
-
-          .status {
-            font-size: 20px;
-            margin: 20px;
-          }
-
-          .reset-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-          }
-
-          .reset-button:hover {
-            background-color: #0056b3;
-          }
-        `}
-      </style> */}
-      <div className="mx-auto my-5 flex flex-col">
+    <div style={containerStyle} className="gameBoard">
+      <div id="statusArea" className="status" style={instructionsStyle}>
+        Next player: <span>{isXNext ? 'X' : 'O'}</span>
+      </div>
+      <div id="winnerArea" className="winner" style={instructionsStyle}>
+        Winner: <span>{winner || 'None'}</span>
+      </div>
+      <button style={buttonStyle} onClick={resetGame}>
+        Reset
+      </button>
+      <div style={boardStyle}>
         {[0, 1, 2].map((row) => (
-          <div className="flex flex-row justify-center" key={row}>
-            {renderSquare(row * 3)}
-            {renderSquare(row * 3 + 1)}
-            {renderSquare(row * 3 + 2)}
+          <div key={row} className="board-row" style={rowStyle}>
+            {[0, 1, 2].map((col) => {
+              const index = row * 3 + col;
+              return (
+                <Square
+                  key={index}
+                  value={squares[index]}
+                  onClick={() => handleClick(index)}
+                />
+              );
+            })}
           </div>
         ))}
       </div>
-      <div className="status">
-        {winner ? `Winner: ${winner}` : `Next Player: ${isXNext ? 'X' : 'O'}`}
-      </div>
-      <Button onClick={resetGame} kind="error">
-        Reset Game
-      </Button>
     </div>
   );
 };
