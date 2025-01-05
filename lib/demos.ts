@@ -9,7 +9,7 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'React Examples',
     items: [
       {
-        name: 'Couter',
+        name: 'Counter',
         slug: 'counter',
         description: 'Create simple react counter',
       },

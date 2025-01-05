@@ -7,6 +7,7 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
+import { Wrapper, Accordion, AccordionItem } from './accordion';
 
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,21 +52,26 @@ export function GlobalNav() {
         })}
       >
         <nav className="space-y-6 px-2 pb-24 pt-5">
-          {demos.map((section) => {
-            return (
-              <div key={section.name}>
-                <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400/80">
-                  <div>{section.name}</div>
-                </div>
-
-                <div className="space-y-1">
-                  {section.items.map((item) => (
-                    <GlobalNavItem key={item.slug} item={item} close={close} />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+          <Wrapper>
+            {/* `transitionTimeout` prop should be equal to the transition duration in CSS */}
+            <Accordion transition transitionTimeout={250}>
+              {demos.map((section) => {
+                return (
+                  <AccordionItem key={section.name} header={section.name}>
+                    <div className="space-y-1">
+                      {section.items.map((item) => (
+                        <GlobalNavItem
+                          key={item.slug}
+                          item={item}
+                          close={close}
+                        />
+                      ))}
+                    </div>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
+          </Wrapper>
         </nav>
       </div>
     </div>
