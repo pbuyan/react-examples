@@ -1,4 +1,4 @@
-import UseFetch from '../../../../ui/react/custom-hooks/hookUseFetch';
+import UseFetch from '../../../../ui/react/custom-hooks/useFetch/posts';
 import CodeHighlighter from '#/ui/code-highlighter';
 
 export default async function Page() {
@@ -9,8 +9,8 @@ export default async function Page() {
       <div>
         <UseFetch />
         <hr />
-        <CodeHighlighter filePath="/../ui/react/custom-hooks/useFetch.ts" />
-        <CodeHighlighter filePath="/../ui/react/custom-hooks/hookUseFetch.tsx" />
+        <CodeHighlighter filePath="/../ui/react/custom-hooks/useFetch/useFetch.ts" />
+        <CodeHighlighter filePath="/../ui/react/custom-hooks/useFetch/posts.tsx" />
       </div>
     </div>
   );

@@ -68,6 +68,11 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'useFetch',
         description: 'Create custom useFetch hook',
       },
+      {
+        name: 'useDebounce',
+        slug: 'useDebounce',
+        description: 'Create custom useDebounce hook',
+      },
     ],
   },
   {
