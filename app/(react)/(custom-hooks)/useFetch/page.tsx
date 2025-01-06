@@ -9,6 +9,7 @@ export default async function Page() {
       <div>
         <UseFetch />
         <hr />
+        <CodeHighlighter filePath="/../ui/react/custom-hooks/useFetch.ts" />
         <CodeHighlighter filePath="/../ui/react/custom-hooks/hookUseFetch.tsx" />
       </div>
     </div>

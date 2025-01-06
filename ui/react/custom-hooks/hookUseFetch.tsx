@@ -17,7 +17,7 @@ const UseFetch = () => {
 
   return (
     <ul>
-      {data?.map((post: Post) => (
+      {data?.slice(0, 5).map((post: Post) => (
         <li key={post.id}>
           <h3>{post.title}</h3>
           <p>{post.body}</p>
