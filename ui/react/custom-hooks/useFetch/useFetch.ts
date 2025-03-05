@@ -6,7 +6,7 @@ interface FetchState<T> {
   loading: boolean;
 }
 
-export function useFetch<T>(url: string, options?: RequestInit) {
+export default function useFetch<T>(url: string, options?: RequestInit) {
   const [state, setState] = useState<FetchState<T>>({
     data: null,
     error: null,
