@@ -3,7 +3,7 @@
 import { demos, type Item } from '#/lib/demos';
 import { NextLogoDark } from '#/ui/next-logo';
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
@@ -12,6 +12,7 @@ import { Wrapper, Accordion, AccordionItem } from './accordion';
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
   const close = () => setIsOpen(false);
+  const pathname = usePathname();
 
   return (
     <div className="fixed top-0 z-10 flex w-full flex-col border-b border-gray-800 bg-black lg:bottom-0 lg:z-auto lg:w-72 lg:border-b-0 lg:border-r lg:border-gray-800">
@@ -63,6 +64,7 @@ export function GlobalNav() {
                         <GlobalNavItem
                           key={item.slug}
                           item={item}
+                          path={pathname}
                           close={close}
                         />
                       ))}
@@ -80,13 +82,14 @@ export function GlobalNav() {
 
 function GlobalNavItem({
   item,
+  path,
   close,
 }: {
   item: Item;
+  path: string;
   close: () => false | void;
 }) {
-  const segment = useSelectedLayoutSegment();
-  const isActive = item.slug === segment;
+  const isActive = `/${item.slug}` === path;
 
   return (
     <Link
@@ -96,7 +99,7 @@ function GlobalNavItem({
         'block rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
         {
           'text-gray-400 hover:bg-gray-800': !isActive,
-          'text-white': isActive,
+          'bg-gray-800 text-white': isActive,
         },
       )}
     >
