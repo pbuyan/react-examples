@@ -6,7 +6,7 @@ export type Item = {
 
 export const demos: { name: string; items: Item[] }[] = [
   {
-    name: 'React Examples',
+    name: 'Components',
     items: [
       {
         name: 'Counter',
@@ -57,6 +57,21 @@ export const demos: { name: string; items: Item[] }[] = [
         name: 'Phone Book',
         slug: 'phone-book',
         description: 'Create React Phone Book',
+      },
+    ],
+  },
+  {
+    name: 'Context',
+    items: [
+      {
+        name: 'Theme Context',
+        slug: 'theme-context',
+        description: 'Theme Context',
+      },
+      {
+        name: 'Language Context',
+        slug: 'language-context',
+        description: 'Language Context',
       },
     ],
   },

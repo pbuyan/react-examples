@@ -1,10 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 
 const ColorDropdown = () => {
-  const [selectedColor, setSelectedColor] = useState('Red'); // Default color
+  const [selectedColor, setSelectedColor] = useState<string>('Red'); // Default color
 
-  const handleColorChange = (event: any) => {
+  const handleColorChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     setSelectedColor(event.target.value); // Update state with selected color
   };
 
